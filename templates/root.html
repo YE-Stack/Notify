@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@
 		}
 		body{
 			background-image:
-			url('https://i.pinimg.com/originals/73/6c/a3/736ca32dff9564696d7d5daad75d1954.jpg');
+			url("{% static 'bg.jpg' %}");
 		}
 		.output{
 			margin: 200px 600px;
@@ -29,7 +30,7 @@
 			margin: 0px 600px;
 		}
 		.output{
-			
+
 		}
 	</style>
 	<title>YE_stack</title>

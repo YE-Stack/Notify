@@ -5,6 +5,6 @@ from django.http import HttpResponse
 
 def home_view(request):
 	if request.method == 'GET':
-		return render(request, 'root.html',{"output":"	hello"})
+		return render(request, 'root.html', {"output": "Hello World!"})
 	else:
 		return HttpResponse(status=405)
