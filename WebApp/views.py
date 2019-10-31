@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 from Notify.settings import firebase_db
@@ -29,6 +29,6 @@ def home_view(request):
 			"text": s
 		})
 		print(m, s, obj)
-		return HttpResponse(status=201)
+		return redirect('/')
 	else:
 		return HttpResponse(status=405)

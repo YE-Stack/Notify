@@ -34,22 +34,17 @@
 			margin: 0px 600px;
 		}
 		.output{
-			
+
 		}
 	</style>
 	<title>YE_stack</title>
 </head>
 <body>
 	{% block content %}
-<<<<<<< HEAD
 	<div class="backs">
 		<br>
-	<form class="form-signin one" method="POST" id="testform" action="/forum/" style="mar">{% csrf_token %}
-		<h2 class="form-signin-heading text-light m-auto"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INPUT </h2>
-=======
 	<form class="form-signin one" method="POST" id="testform" action="/" style="mar">{% csrf_token %}
-		<h2 class="form-signin-heading text-light">INPUT </h2>
->>>>>>> 969b1731eae56bc3bfaf5cf894899d3573a4bc70
+		<h2 class="form-signin-heading text-light m-auto"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INPUT </h2>
 		<br>
 		<br>
 		<input type="text" name="text">
@@ -63,15 +58,12 @@
 		<button class="btn btn-lg btn-primary" type="submit">Submit</button>
 	</form>
 	<br>
-<<<<<<< HEAD
 	</div>
 	<br>
 	<div class="backs">
 		<br>
-	<h2 class="text-light heads">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OUTPUT</h2>
-=======
->>>>>>> 969b1731eae56bc3bfaf5cf894899d3573a4bc70
 	{% if output %}
+	<h2 class="text-light heads">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OUTPUT</h2>
 	<h2 class="text-light heads"> OUTPUT</h2>
 	<div class="output text-light">{{output}}</div>
 	{% endif %}
