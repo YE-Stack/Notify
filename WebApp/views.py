@@ -11,8 +11,8 @@ def home_view(request):
 		webuser_data = firebase_db.child('webuser').get().val()
 		output = None
 		if mobile_data != "" and webuser_data != "":
-			m = mobile_data['number']
-			n = webuser_data['number']
+			m = int(mobile_data['number'])
+			n = int(webuser_data['number'])
 			s = mobile_data['text']
 			t = webuser_data['text']
 			output = s + ' ' + t + ' ' + str(m + n)
@@ -25,7 +25,7 @@ def home_view(request):
 		m = int(r['number'])
 		s = r['text']
 		obj = firebase_db.child('webuser').set({
-			"number": m,
+			"number": str(m),
 			"text": s
 		})
 		print(m, s, obj)
