@@ -23,6 +23,10 @@
 			background-image:
 			url("{% static 'bg.jpg' %}");
 		}
+		.backs{
+				background-color: rgb(0,0,0,0.2);
+				margin: 10px 10px;
+		}
 		.output{
 			margin: 200px 600px;
 		}
@@ -30,15 +34,17 @@
 			margin: 0px 600px;
 		}
 		.output{
-
+			
 		}
 	</style>
 	<title>YE_stack</title>
 </head>
 <body>
 	{% block content %}
+	<div class="backs">
+		<br>
 	<form class="form-signin one" method="POST" id="testform" action="/forum/" style="mar">{% csrf_token %}
-		<h2 class="form-signin-heading text-light">INPUT </h2>
+		<h2 class="form-signin-heading text-light m-auto"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INPUT </h2>
 		<br>
 		<br>
 		<input type="hidden" name="category" value="{{ category }}">
@@ -53,11 +59,17 @@
 		<button class="btn btn-lg btn-primary" type="submit">Submit</button>
 	</form>
 	<br>
-	<h2 class="text-light heads"> OUTPUT</h2>
+	</div>
+	<br>
+	<div class="backs">
+		<br>
+	<h2 class="text-light heads">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OUTPUT</h2>
 	{% if output %}
 	<div class="output text-light">{{output}}</div>
 	{% endif %}
 	{% endblock %}
+	<br>
+	</div>
 </body>
 </html>
 
