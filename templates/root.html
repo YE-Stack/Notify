@@ -37,24 +37,23 @@
 </head>
 <body>
 	{% block content %}
-	<form class="form-signin one" method="POST" id="testform" action="/forum/" style="mar">{% csrf_token %}
+	<form class="form-signin one" method="POST" id="testform" action="/" style="mar">{% csrf_token %}
 		<h2 class="form-signin-heading text-light">INPUT </h2>
 		<br>
 		<br>
-		<input type="hidden" name="category" value="{{ category }}">
-		<input type="text" required name="title">
+		<input type="text" name="text">
 		<br>
 		<br>
 		<br>
-		<input type="number" required name="number">
+		<input type="number" name="number">
 		<!-- <input type="text" required name="description"> -->
 		<br>
 		<br><br>
 		<button class="btn btn-lg btn-primary" type="submit">Submit</button>
 	</form>
 	<br>
-	<h2 class="text-light heads"> OUTPUT</h2>
 	{% if output %}
+	<h2 class="text-light heads"> OUTPUT</h2>
 	<div class="output text-light">{{output}}</div>
 	{% endif %}
 	{% endblock %}
