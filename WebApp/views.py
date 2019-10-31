@@ -18,6 +18,7 @@ def home_view(request):
 			output = s + ' ' + t + ' ' + str(m + n)
 			firebase_db.child('mobile').set("")
 			firebase_db.child('webuser').set("")
+			firebase_db.child('result').set(output)
 		return render(request, 'root.html', {"output": output})
 	elif request.method == 'POST':
 		r = request.POST
