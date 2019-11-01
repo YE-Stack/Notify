@@ -28,6 +28,8 @@ def home_view(request):
 		mobile_data = mobile_db.get()
 		webuser_data = webuser_db.get()
 		output = None
+		m = None
+		s = None
 		if mobile_data != "" and webuser_data != "":
 			result_db = db.reference('/result')
 			m = int(mobile_data['number'])
@@ -42,7 +44,7 @@ def home_view(request):
 			message = "Your Associate has responded"
 			twilio_client.messages.create(from_=local_credentials.twilio_sms_contact, body=message, to=local_credentials.mobile_contact)
 			twilio_client.messages.create(from_="whatsapp:" + local_credentials.twilio_contact, body=message, to="whatsapp:" + local_credentials.mobile_contact)
-		return render(request, 'root.html', {"output": output})
+		return render(request, 'root.html', {"output": output, "input_number": m, "input_text": s})
 	elif request.method == 'POST':
 		webuser_db = db.reference('/webuser')
 		r = request.POST
