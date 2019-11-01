@@ -8,8 +8,8 @@ __pycache__/
 __init__.py
 *.pyc
 
-# Firebase Config
-firebase_config.py
+# Credentials
+credentials.py
 
 # DS_Store
 .DS_Store
