@@ -1,23 +1,21 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
-from Notify.settings import twilio_session
-from credentials import twilio_contact, mobile_contact, web_contact
 from firebase_admin import db
-import requests
+from twilio.rest import Client
+from Notify.settings import local_credentials
 
-twilio_api_link = "https://api.twilio.com/2010-04-01/Accounts/AC05527c10148eab4a7742610285965992/Messages.json"
+twilio_client = Client(local_credentials.twilio_auth[0], local_credentials.twilio_auth[1])
 
 def listener(event):
 	print(event.event_type)
 	print(event.path)
 	print(event.data)
-	whatsapp_message = {
-		"To": web_contact,
-		"From": twilio_contact,
-		"Body": "Your friend has messaged you :)"
-	}
-	twilio_session.post(twilio_api_link, data=whatsapp_message)
+	if event.data == None:
+		return
+	message = "Your Associate has sent something"
+	twilio_client.messages.create(from_=local_credentials.twilio_sms_contact, body=message, to=local_credentials.web_contact)
+	twilio_client.messages.create(from_="whatsapp:" + local_credentials.twilio_contact, body=message, to="whatsapp:" + local_credentials.web_contact)
 
 db.reference('/mobile').listen(listener)
 
@@ -41,12 +39,9 @@ def home_view(request):
 			webuser_db.set("")
 			result_db.set(output)
 
-			whatsapp_message = {
-				"To": mobile_contact,
-				"From": twilio_contact,
-				"Body": "Hi, your friend has responded to your request :)"
-			}
-			twilio_session.post(twilio_api_link, data=whatsapp_message)
+			message = "Your Associate has responded"
+			twilio_client.messages.create(from_=local_credentials.twilio_sms_contact, body=message, to=local_credentials.mobile_contact)
+			twilio_client.messages.create(from_="whatsapp:" + local_credentials.twilio_contact, body=message, to="whatsapp:" + local_credentials.mobile_contact)
 		return render(request, 'root.html', {"output": output})
 	elif request.method == 'POST':
 		webuser_db = db.reference('/webuser')

@@ -35,9 +35,6 @@ ALLOWED_HOSTS = ['*']
 cred = credentials.Certificate(local_credentials.path_to_json)
 firebase = firebase_admin.initialize_app(cred, local_credentials.firebase_config)
 
-twilio_session = requests.Session()
-twilio_session.auth = local_credentials.twilio_auth
-
 # Application definition
 
 INSTALLED_APPS = [
