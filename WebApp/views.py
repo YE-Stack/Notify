@@ -30,11 +30,12 @@ def home_view(request):
 		output = None
 		m = None
 		s = None
+		if mobile_data != "":
+			m = int(mobile_data['number'])
+			s = mobile_data['text']
 		if mobile_data != "" and webuser_data != "":
 			result_db = db.reference('/result')
-			m = int(mobile_data['number'])
 			n = int(webuser_data['number'])
-			s = mobile_data['text']
 			t = webuser_data['text']
 			output = s + ' ' + t + ' ' + str(m + n)
 			mobile_db.set("")
