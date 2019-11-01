@@ -17,8 +17,11 @@
 	</script>
 	<style>
 		.one{
-			margin: 100px 600px;
+			margin: auto;
+			width:50%;
+			padding:auto;
 		}
+
 		body{
 			background-image:
 			url("{% static 'bg.jpg' %}");
@@ -28,12 +31,41 @@
 				margin: 10px 10px;
 		}
 		.output{
-			margin: 200px 600px;
+			margin: 100px 500px;
+			background-color: rgb(0,0,0,0.4);
+			padding: 30px 30px;
 		}
 		.heads{
-			margin: 0px 600px;
+			margin:auto;
+			font-size: 100px;
+			margin-left:20px;
 		}
+
 		.output{
+			font-size:500px;
+		}
+		.in{
+			width:100%;
+			height:100%;
+			padding: 30px;
+			background-color:rgb(0,0,0,0.2);
+			color: white;
+			font-size:40px;
+			
+		}
+		.butt{
+			margin: 20px 220px;
+			padding:30px 60px;
+			color:white;
+			background-color: black;
+			font-size: 40px;
+		}
+		.heads1{
+			margin-left:50px;
+			font-size: 50px;
+			padding:40px 100px;
+
+
 
 		}
 	</style>
@@ -41,35 +73,34 @@
 </head>
 <body>
 	{% block content %}
+		<br>
+		{% if output %}
+		<div class="backs text-light">
+			<h2 class="text-light heads">OUTPUT</h2>
+<h2 class="heads1">{{output}}</h2>
+		</div>
+		{% endif %}
+		{% endblock %}
+		<br>
 	<div class="backs">
 		<br>
 	<form class="form-signin one" method="POST" id="testform" action="/" style="mar">{% csrf_token %}
-		<h2 class="form-signin-heading text-light m-auto"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INPUT </h2>
+		<h2 class="form-signin-heading text-light heads">INPUT </h2>
 		<br>
 		<br>
-		<input type="text" name="text">
+		<input type="text" name="text" class="in" placeholder="Enter String">
 		<br>
 		<br>
 		<br>
-		<input type="number" name="number">
-		<!-- <input type="text" required name="description"> -->
+		<input type="number" name="number" class="in" placeholder="Enter Integer">
 		<br>
 		<br><br>
-		<button class="btn btn-lg btn-primary" type="submit">Submit</button>
+		<button class="btn btn-lg btn-dark butt" type="submit">SUBMIT</button>
 	</form>
 	<br>
 	</div>
 	<br>
-	<div class="backs">
-		<br>
-	{% if output %}
-	<h2 class="text-light heads">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OUTPUT</h2>
-	<h2 class="text-light heads"> OUTPUT</h2>
-	<div class="output text-light">{{output}}</div>
-	{% endif %}
-	{% endblock %}
-	<br>
-	</div>
+	
 </body>
 </html>
 
