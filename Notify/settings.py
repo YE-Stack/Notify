@@ -12,9 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import credentials as local_credentials
-import requests
 import firebase_admin
-from firebase_admin import credentials
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,7 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 # Firebase
-cred = credentials.Certificate(local_credentials.path_to_json)
+cred = firebase_admin.credentials.Certificate(local_credentials.path_to_json)
 firebase = firebase_admin.initialize_app(cred, local_credentials.firebase_config)
 
 # Application definition
