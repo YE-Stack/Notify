@@ -44,7 +44,7 @@ def home_view(request):
 			message = "Your Associate has responded"
 			twilio_client.messages.create(from_=local_credentials.twilio_sms_contact, body=message, to=local_credentials.mobile_contact)
 			twilio_client.messages.create(from_="whatsapp:" + local_credentials.twilio_contact, body=message, to="whatsapp:" + local_credentials.mobile_contact)
-		return render(request, 'root.html', {"output": output, "input_number": m, "input_text": s})
+		return render(request, 'root.html', {"output": output, "input_number": str(m), "input_text": s})
 	elif request.method == 'POST':
 		webuser_db = db.reference('/webuser')
 		r = request.POST

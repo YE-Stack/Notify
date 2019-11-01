@@ -72,7 +72,7 @@
 	<title>YE_stack</title>
 </head>
 <body>
-	{% block content %}
+
 		<br>
 		{% if output %}
 		<div class="backs text-light">
@@ -80,25 +80,33 @@
 <h2 class="heads1">{{output}}</h2>
 		</div>
 		{% endif %}
-		{% endblock %}
+
 		<br>
 	<div class="backs">
+		{% if input_text %}
+		<div class="backs text-light">
+			<h2 class="text-light heads">User Input</h2>
+			<h2 class="heads1">{{ input_number }}</h2>
+			<h2 class="heads1">{{ input_text }}</h2>
+		</div>
+		{% endif %}
 		<br>
-	<form class="form-signin one" method="POST" id="testform" action="/" style="mar">{% csrf_token %}
-		<h2 class="form-signin-heading text-light heads">INPUT </h2>
+			<form class="form-signin one" method="POST" id="testform" action="/" style="mar">{% csrf_token %}
+				<h2 class="form-signin-heading text-light heads">INPUT </h2>
+				<br>
+				<br>
+				<input type="text" name="text" class="in" placeholder="Enter String">
+				<br>
+				<br>
+				<br>
+				<input type="number" name="number" class="in" placeholder="Enter Integer">
+				<br>
+				<br><br>
+				<button class="btn btn-lg btn-dark butt" type="submit">SUBMIT</button>
+			</form>
 		<br>
-		<br>
-		<input type="text" name="text" class="in" placeholder="Enter String">
-		<br>
-		<br>
-		<br>
-		<input type="number" name="number" class="in" placeholder="Enter Integer">
-		<br>
-		<br><br>
-		<button class="btn btn-lg btn-dark butt" type="submit">SUBMIT</button>
-	</form>
-	<br>
 	</div>
+	
 	<br>
 	
 </body>
