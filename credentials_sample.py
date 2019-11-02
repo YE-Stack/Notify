@@ -1,4 +1,4 @@
-# Firebase Config
+# Firebase Web API
 firebase_config = {
     "apiKey": "",
     "authDomain": "",
